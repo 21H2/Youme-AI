@@ -1,0 +1,65 @@
+import { IconDashboard, IconSettings, IconPalette } from "@tabler/icons-react";
+import { MessageCircle, Twitter, Youtube } from "lucide-react";
+import { Link } from "react-router";
+import { NavMain } from "./nav-main";
+import { NavSecondary } from "./nav-secondary";
+import { NavUser } from "./nav-user";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarMenuButton,
+  SidebarGroupLabel,
+} from "~/components/ui/sidebar";
+
+const data = {
+  navMain: [
+    {
+      title: "Projects",
+      url: "/dashboard",
+      icon: IconDashboard,
+    },
+  ],
+  navSecondary: [
+    {
+      title: "Settings",
+      url: "/dashboard/settings",
+      icon: IconSettings,
+    },
+  ],
+};
+
+export function AppSidebar({
+  variant,
+  user,
+}: {
+  variant: "sidebar" | "floating" | "inset";
+  user: any;
+}) {
+
+  return (
+    <Sidebar collapsible="offcanvas" variant={variant}>
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <Link to="/" prefetch="viewport">
+              <span className="text-base font-semibold">Youme AI</span>
+            </Link>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
+      <SidebarContent>
+        <NavMain items={data.navMain} />
+        
+        
+        <NavSecondary items={data.navSecondary} className="mt-2" />
+      </SidebarContent>
+      <SidebarFooter>{user && <NavUser user={user} />}</SidebarFooter>
+    </Sidebar>
+  );
+}
