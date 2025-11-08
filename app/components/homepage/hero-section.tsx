@@ -6,6 +6,7 @@ import React from 'react'
 import { Button } from '~/components/ui/button'
 import VideoPlayer from '../VideoPlayer'
 import { Navbar } from './navbar'
+import ShinyText from '~/components/ui/ShinyText'
 
 interface LoaderData {
     isSignedIn: boolean;
@@ -29,7 +30,9 @@ export default function HeroSection({ loaderData }: { loaderData: LoaderData }) 
             <Navbar loaderData={loaderData} />
             <div className="pt-[4rem] px-[2rem]">
                 <div className="text-center">
-                    <h1 className="mx-auto mt-16 max-w-xl text-5xl text-balance font-medium">Introducing Youme AI</h1>
+                    <h1 className="mx-auto mt-16 max-w-xl text-5xl text-balance font-medium">
+                        Introducing <ShinyText text="Youme AI" speed={3} />
+                    </h1>
                     <p className="text-muted-foreground mx-auto mb-6 mt-4 text-balance text-xl">Generate compelling titles, descriptions, stunning thumbnails, and viral social media posts.</p>
                     <div className="flex flex-col items-center gap-2 *:w-full sm:flex-row sm:justify-center sm:*:w-auto">
                         <Button

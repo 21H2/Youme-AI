@@ -82,7 +82,11 @@ export default function Page() {
       // Navigate to the new project canvas
       window.location.href = `/dashboard/project/${projectId}`;
     } catch (error) {
-      toast.error("Failed to create project");
+      // Log and surface error message to help debugging (shows Convex / server errors)
+      // eslint-disable-next-line no-console
+      console.error("createProject error:", error);
+      const message = error instanceof Error ? error.message : String(error);
+      toast.error(message || "Failed to create project");
     }
   };
 
