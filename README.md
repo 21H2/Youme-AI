@@ -83,6 +83,7 @@ VITE_CONVEX_URL=your_convex_url_here
 # Clerk Authentication
 VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key_here
 CLERK_SECRET_KEY=your_clerk_secret_key_here
+CLERK_JWT_ISSUER_DOMAIN=your_clerk_issuer_domain_here
 
 # OpenAI Configuration
 OPENAI_API_KEY=your_openai_api_key_here
@@ -94,6 +95,8 @@ ELEVENLABS_API_KEY=your_elevenlabs_api_key_here
 FRONTEND_URL=http://localhost:5173
 ```
 
+> **Note on CLERK_JWT_ISSUER_DOMAIN**: You can find this in your Clerk Dashboard under **Configure** > **JWT Templates** > **Convex**. It typically looks like `https://your-clerk-subdomain.clerk.accounts.dev` or your custom domain.
+
 4. Initialize Convex:
 
 ```bash
@@ -103,6 +106,7 @@ npx convex dev
 5. Set up environment variables in Convex dashboard:
    - `OPENAI_API_KEY`
    - `ELEVENLABS_API_KEY`
+   - `CLERK_JWT_ISSUER_DOMAIN` (same value as in your .env.local)
 
 ### Development
 
@@ -229,6 +233,7 @@ Make sure to deploy the output of `npm run build`
 - `VITE_CONVEX_URL` - Your Convex client URL
 - `VITE_CLERK_PUBLISHABLE_KEY` - Clerk publishable key
 - `CLERK_SECRET_KEY` - Clerk secret key for server-side auth
+- `CLERK_JWT_ISSUER_DOMAIN` - Clerk JWT issuer domain for Convex authentication
 - `FRONTEND_URL` - Your production frontend URL
 
 #### Convex Environment Variables (set in Convex dashboard)
