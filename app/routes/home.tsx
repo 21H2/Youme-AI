@@ -7,7 +7,8 @@ import FeaturesSectionDemo from "~/components/homepage/features-section-demo";
 import { MacbookSection } from "~/components/homepage/macbook-section";
 import ScrollStack, { ScrollStackItem } from "~/components/ScrollStack";
 import ProfileCard from "~/components/ProfileCard";
-import Aurora from "~/components/Aurora";
+import TargetCursor from "~/components/TargetCursor";
+import LogoLoop from "~/components/LogoLoop";
 import type { Route } from "./+types/home";
 
 export function meta({ }: Route.MetaArgs) {
@@ -78,19 +79,35 @@ export async function loader(args: Route.LoaderArgs) {
 export default function Home({ loaderData }: Route.ComponentProps) {
   return (
     <>
-      <div className="relative">
-        <div className="absolute inset-0 w-full h-screen pointer-events-none z-0">
-          <Aurora
-            colorStops={['#5227FF', '#7cff67', '#5227FF']}
-            amplitude={1.2}
-            blend={0.6}
-            speed={1.5}
+      <TargetCursor targetSelector=".cursor-target" spinDuration={2} hideDefaultCursor={true} />
+      <HeroSection loaderData={loaderData}/>
+      
+      {/* Logo Loop Section */}
+      <div className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Powered by Industry-Leading Technologies</h2>
+          <LogoLoop
+            logos={[
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", alt: "React" },
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", alt: "TypeScript" },
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", alt: "Node.js" },
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", alt: "Python" },
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg", alt: "PostgreSQL" },
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg", alt: "MongoDB" },
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg", alt: "Docker" },
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg", alt: "AWS" },
+            ]}
+            speed={80}
+            direction="left"
+            logoHeight={48}
+            gap={48}
+            pauseOnHover={true}
+            fadeOut={true}
+            scaleOnHover={true}
           />
         </div>
-        <div className="relative z-10">
-          <HeroSection loaderData={loaderData}/>
-        </div>
       </div>
+
       <ScrollStack
         className="my-16"
         itemDistance={150}
@@ -101,15 +118,15 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         baseScale={0.9}
         useWindowScroll={true}
       >
-        <ScrollStackItem itemClassName="bg-gradient-to-br from-purple-500 to-pink-500">
+        <ScrollStackItem itemClassName="bg-gradient-to-br from-purple-500 to-pink-500 cursor-target">
           <h2 className="text-4xl font-bold text-white">AI-Powered Content</h2>
           <p className="text-white/90 mt-4">Generate engaging content with advanced AI</p>
         </ScrollStackItem>
-        <ScrollStackItem itemClassName="bg-gradient-to-br from-blue-500 to-cyan-500">
+        <ScrollStackItem itemClassName="bg-gradient-to-br from-blue-500 to-cyan-500 cursor-target">
           <h2 className="text-4xl font-bold text-white">Smart Analytics</h2>
           <p className="text-white/90 mt-4">Track your content performance in real-time</p>
         </ScrollStackItem>
-        <ScrollStackItem itemClassName="bg-gradient-to-br from-green-500 to-emerald-500">
+        <ScrollStackItem itemClassName="bg-gradient-to-br from-green-500 to-emerald-500 cursor-target">
           <h2 className="text-4xl font-bold text-white">Easy Sharing</h2>
           <p className="text-white/90 mt-4">Share your content across all platforms</p>
         </ScrollStackItem>
@@ -120,11 +137,11 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         <ProfileCard
           avatarUrl="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&h=400&fit=crop"
           miniAvatarUrl="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop"
-          name="Youme AI"
-          title="AI Content Creator"
-          handle="youmeai"
-          status="Active"
-          contactText="Get Started"
+          name="Umesh Sharma"
+          title="Full Stack Developer"
+          handle="umeshsharma"
+          status="Available"
+          contactText="Contact Me"
           showUserInfo={true}
           onContactClick={() => window.location.href = '/dashboard'}
         />
