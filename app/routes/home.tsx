@@ -81,7 +81,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   return (
     <>
       <ClientOnly fallback={null}>
-        <TargetCursor targetSelector=".cursor-target" spinDuration={2} hideDefaultCursor={true} />
+        <TargetCursor targetSelector="a, button, .cursor-target, [role='button']" spinDuration={2} hideDefaultCursor={true} />
       </ClientOnly>
       <HeroSection loaderData={loaderData}/>
       
@@ -90,25 +90,39 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         <div className="py-16 bg-background">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12">Powered by Industry-Leading Technologies</h2>
-            <LogoLoop
-            logos={[
-              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", alt: "React" },
-              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", alt: "TypeScript" },
-              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", alt: "Node.js" },
-              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", alt: "Python" },
-              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg", alt: "PostgreSQL" },
-              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg", alt: "MongoDB" },
-              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg", alt: "Docker" },
-              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg", alt: "AWS" },
-            ]}
-            speed={80}
-            direction="left"
-            logoHeight={48}
-            gap={48}
-            pauseOnHover={true}
-            fadeOut={false}
-            scaleOnHover={true}
-          />
+            <div className="[&_img]:grayscale [&_img]:opacity-70 hover:[&_img]:grayscale-0 hover:[&_img]:opacity-100 [&_img]:transition-all [&_img]:duration-300">
+              <LogoLoop
+                logos={[
+                  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", alt: "React" },
+                  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", alt: "TypeScript" },
+                  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", alt: "Node.js" },
+                  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", alt: "Next.js" },
+                  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg", alt: "Tailwind CSS" },
+                  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", alt: "Python" },
+                  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg", alt: "PostgreSQL" },
+                  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg", alt: "MongoDB" },
+                  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg", alt: "Redis" },
+                  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg", alt: "Docker" },
+                  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg", alt: "Kubernetes" },
+                  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg", alt: "AWS" },
+                  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg", alt: "Git" },
+                  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg", alt: "GitHub" },
+                  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg", alt: "VS Code" },
+                  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg", alt: "Figma" },
+                  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg", alt: "GraphQL" },
+                  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg", alt: "Jest" },
+                  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webpack/webpack-original.svg", alt: "Webpack" },
+                  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg", alt: "Nginx" },
+                ]}
+                speed={60}
+                direction="left"
+                logoHeight={40}
+                gap={56}
+                pauseOnHover={true}
+                fadeOut={false}
+                scaleOnHover={true}
+              />
+            </div>
           </div>
         </div>
       </ClientOnly>
@@ -141,18 +155,22 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       <FeaturesSectionDemo />
       <MacbookSection />
       <ClientOnly fallback={<div className="py-20 bg-background h-96" />}>
-        <div className="flex justify-center items-center py-20 bg-background">
-          <ProfileCard
-            avatarUrl="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&h=400&fit=crop"
-            miniAvatarUrl="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop"
-            name="Umesh Sharma"
-            title="Full Stack Developer"
-            handle="umeshsharma"
-            status="Available"
-            contactText="Contact Me"
-            showUserInfo={true}
-            onContactClick={() => window.location.href = '/dashboard'}
-          />
+        <div className="flex justify-center items-center py-20 bg-background min-h-screen">
+          <div className="w-full max-w-md px-4 cursor-target">
+            <ProfileCard
+              avatarUrl="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&h=400&fit=crop"
+              miniAvatarUrl="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop"
+              name="Umesh Sharma"
+              title="Full Stack Developer"
+              handle="umeshsharma"
+              status="Available"
+              contactText="Contact Me"
+              showUserInfo={true}
+              enableTilt={true}
+              behindGlowEnabled={true}
+              onContactClick={() => window.location.href = '/dashboard'}
+            />
+          </div>
         </div>
       </ClientOnly>
       <Footer />
