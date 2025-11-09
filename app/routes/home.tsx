@@ -5,6 +5,8 @@ import Footer from "~/components/homepage/footer";
 import HeroSection from "~/components/homepage/hero-section";
 import FeaturesSectionDemo from "~/components/homepage/features-section-demo";
 import { MacbookSection } from "~/components/homepage/macbook-section";
+import ScrollStack, { ScrollStackItem } from "~/components/ScrollStack";
+import ProfileCard from "~/components/ProfileCard";
 import type { Route } from "./+types/home";
 
 export function meta({ }: Route.MetaArgs) {
@@ -76,8 +78,44 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   return (
     <>
       <HeroSection loaderData={loaderData}/>
+      <ScrollStack
+        className="my-16"
+        itemDistance={150}
+        itemScale={0.05}
+        itemStackDistance={40}
+        stackPosition="30%"
+        scaleEndPosition="15%"
+        baseScale={0.9}
+        useWindowScroll={true}
+      >
+        <ScrollStackItem itemClassName="bg-gradient-to-br from-purple-500 to-pink-500">
+          <h2 className="text-4xl font-bold text-white">AI-Powered Content</h2>
+          <p className="text-white/90 mt-4">Generate engaging content with advanced AI</p>
+        </ScrollStackItem>
+        <ScrollStackItem itemClassName="bg-gradient-to-br from-blue-500 to-cyan-500">
+          <h2 className="text-4xl font-bold text-white">Smart Analytics</h2>
+          <p className="text-white/90 mt-4">Track your content performance in real-time</p>
+        </ScrollStackItem>
+        <ScrollStackItem itemClassName="bg-gradient-to-br from-green-500 to-emerald-500">
+          <h2 className="text-4xl font-bold text-white">Easy Sharing</h2>
+          <p className="text-white/90 mt-4">Share your content across all platforms</p>
+        </ScrollStackItem>
+      </ScrollStack>
       <FeaturesSectionDemo />
       <MacbookSection />
+      <div className="flex justify-center items-center py-20 bg-background">
+        <ProfileCard
+          avatarUrl="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&h=400&fit=crop"
+          miniAvatarUrl="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop"
+          name="Youme AI"
+          title="AI Content Creator"
+          handle="youmeai"
+          status="Active"
+          contactText="Get Started"
+          showUserInfo={true}
+          onContactClick={() => window.location.href = '/dashboard'}
+        />
+      </div>
       <Footer />
     </>
   );
