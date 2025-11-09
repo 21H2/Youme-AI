@@ -9,6 +9,7 @@ import ScrollStack, { ScrollStackItem } from "~/components/ScrollStack";
 import ProfileCard from "~/components/ProfileCard";
 import TargetCursor from "~/components/TargetCursor";
 import LogoLoop from "~/components/LogoLoop";
+import { ClientOnly } from "~/components/ClientOnly";
 import type { Route } from "./+types/home";
 
 export function meta({ }: Route.MetaArgs) {
@@ -79,14 +80,17 @@ export async function loader(args: Route.LoaderArgs) {
 export default function Home({ loaderData }: Route.ComponentProps) {
   return (
     <>
-      <TargetCursor targetSelector=".cursor-target" spinDuration={2} hideDefaultCursor={true} />
+      <ClientOnly fallback={null}>
+        <TargetCursor targetSelector=".cursor-target" spinDuration={2} hideDefaultCursor={true} />
+      </ClientOnly>
       <HeroSection loaderData={loaderData}/>
       
       {/* Logo Loop Section */}
-      <div className="py-16 bg-background">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Powered by Industry-Leading Technologies</h2>
-          <LogoLoop
+      <ClientOnly fallback={<div className="py-16 bg-background"><div className="container mx-auto px-4"><div className="h-24" /></div></div>}>
+        <div className="py-16 bg-background">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center mb-12">Powered by Industry-Leading Technologies</h2>
+            <LogoLoop
             logos={[
               { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", alt: "React" },
               { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", alt: "TypeScript" },
@@ -105,10 +109,12 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             fadeOut={true}
             scaleOnHover={true}
           />
+          </div>
         </div>
-      </div>
+      </ClientOnly>
 
-      <ScrollStack
+      <ClientOnly fallback={<div className="my-16 h-96" />}>
+        <ScrollStack
         className="my-16"
         itemDistance={150}
         itemScale={0.05}
@@ -131,21 +137,24 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           <p className="text-white/90 mt-4">Share your content across all platforms</p>
         </ScrollStackItem>
       </ScrollStack>
+      </ClientOnly>
       <FeaturesSectionDemo />
       <MacbookSection />
-      <div className="flex justify-center items-center py-20 bg-background">
-        <ProfileCard
-          avatarUrl="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&h=400&fit=crop"
-          miniAvatarUrl="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop"
-          name="Umesh Sharma"
-          title="Full Stack Developer"
-          handle="umeshsharma"
-          status="Available"
-          contactText="Contact Me"
-          showUserInfo={true}
-          onContactClick={() => window.location.href = '/dashboard'}
-        />
-      </div>
+      <ClientOnly fallback={<div className="py-20 bg-background h-96" />}>
+        <div className="flex justify-center items-center py-20 bg-background">
+          <ProfileCard
+            avatarUrl="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&h=400&fit=crop"
+            miniAvatarUrl="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop"
+            name="Umesh Sharma"
+            title="Full Stack Developer"
+            handle="umeshsharma"
+            status="Available"
+            contactText="Contact Me"
+            showUserInfo={true}
+            onContactClick={() => window.location.href = '/dashboard'}
+          />
+        </div>
+      </ClientOnly>
       <Footer />
     </>
   );
