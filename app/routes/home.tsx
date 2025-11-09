@@ -7,6 +7,7 @@ import FeaturesSectionDemo from "~/components/homepage/features-section-demo";
 import { MacbookSection } from "~/components/homepage/macbook-section";
 import ScrollStack, { ScrollStackItem } from "~/components/ScrollStack";
 import ProfileCard from "~/components/ProfileCard";
+import Aurora from "~/components/Aurora";
 import type { Route } from "./+types/home";
 
 export function meta({ }: Route.MetaArgs) {
@@ -77,7 +78,19 @@ export async function loader(args: Route.LoaderArgs) {
 export default function Home({ loaderData }: Route.ComponentProps) {
   return (
     <>
-      <HeroSection loaderData={loaderData}/>
+      <div className="relative">
+        <div className="absolute inset-0 w-full h-screen pointer-events-none z-0">
+          <Aurora
+            colorStops={['#5227FF', '#7cff67', '#5227FF']}
+            amplitude={1.2}
+            blend={0.6}
+            speed={1.5}
+          />
+        </div>
+        <div className="relative z-10">
+          <HeroSection loaderData={loaderData}/>
+        </div>
+      </div>
       <ScrollStack
         className="my-16"
         itemDistance={150}
