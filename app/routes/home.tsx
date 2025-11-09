@@ -106,7 +106,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             logoHeight={48}
             gap={48}
             pauseOnHover={true}
-            fadeOut={true}
+            fadeOut={false}
             scaleOnHover={true}
           />
           </div>
