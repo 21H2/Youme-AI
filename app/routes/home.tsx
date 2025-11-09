@@ -4,6 +4,7 @@ import { api } from "convex/_generated/api";
 import Footer from "~/components/homepage/footer";
 import HeroSection from "~/components/homepage/hero-section";
 import FeaturesSectionDemo from "~/components/homepage/features-section-demo";
+import { MacbookSection } from "~/components/homepage/macbook-section";
 import type { Route } from "./+types/home";
 
 export function meta({ }: Route.MetaArgs) {
@@ -76,6 +77,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
     <>
       <HeroSection loaderData={loaderData}/>
       <FeaturesSectionDemo />
+      <MacbookSection />
       <Footer />
     </>
   );
