@@ -56,9 +56,19 @@ export default function SharedCanvasPage() {
     );
   }
   
+  // Ensure video fields have default values
+  const normalizedData = {
+    ...sharedData,
+    video: {
+      ...sharedData.video,
+      duration: sharedData.video.duration ?? 0,
+      fileSize: sharedData.video.fileSize ?? 0,
+    },
+  };
+
   return (
     <div className="h-screen bg-background">
-      <SharedCanvas data={sharedData} />
+      <SharedCanvas data={normalizedData} />
     </div>
   );
 }
