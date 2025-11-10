@@ -9,6 +9,7 @@ import TestimonialsSection from "~/components/homepage/testimonials-section";
 import FAQSection from "~/components/homepage/faq-section";
 import CTASection from "~/components/homepage/cta-section";
 import StatsSection from "~/components/homepage/stats-section";
+import PricingSection from "~/components/homepage/pricing-section";
 import TargetCursor from "~/components/TargetCursor";
 import LogoLoop from "~/components/LogoLoop";
 import { ClientOnly } from "~/components/ClientOnly";
@@ -123,6 +124,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       <FeaturesSectionDemo />
       <MacbookSection />
       <TestimonialsSection />
+      <PricingSection />
       <FAQSection />
       <CTASection />
       <Footer />
