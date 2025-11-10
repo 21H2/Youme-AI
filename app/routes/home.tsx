@@ -5,7 +5,6 @@ import Footer from "~/components/homepage/footer";
 import HeroSection from "~/components/homepage/hero-section";
 import FeaturesSectionDemo from "~/components/homepage/features-section-demo";
 import { MacbookSection } from "~/components/homepage/macbook-section";
-import ProfileCard from "~/components/ProfileCard";
 import TargetCursor from "~/components/TargetCursor";
 import LogoLoop from "~/components/LogoLoop";
 import { ClientOnly } from "~/components/ClientOnly";
@@ -116,25 +115,8 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         </div>
       </ClientOnly>
 
-      
       <FeaturesSectionDemo />
       <MacbookSection />
-      <ClientOnly fallback={<div className="py-20 bg-background h-96" />}>
-        <div className="flex justify-center items-center py-20 bg-background">
-        <ProfileCard
-  name="Umesh Sharma"
-  title="Full Stack Dev"
-  handle="@21H2"
-  status="Online"
-  contactText="Contact Me"
-  avatarUrl="2D6A7468-9AD4-453B-8306-CBE50789BB0C_1_105_c.jpeg"
-  showUserInfo={true}
-  enableTilt={true}
-  enableMobileTilt={false}
-  onContactClick={() => console.log('Contact clicked')}
-/>
-        </div>
-      </ClientOnly>
       <Footer />
     </>
   );
