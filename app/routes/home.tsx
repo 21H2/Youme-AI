@@ -5,6 +5,10 @@ import Footer from "~/components/homepage/footer";
 import HeroSection from "~/components/homepage/hero-section";
 import FeaturesSectionDemo from "~/components/homepage/features-section-demo";
 import { MacbookSection } from "~/components/homepage/macbook-section";
+import TestimonialsSection from "~/components/homepage/testimonials-section";
+import FAQSection from "~/components/homepage/faq-section";
+import CTASection from "~/components/homepage/cta-section";
+import StatsSection from "~/components/homepage/stats-section";
 import TargetCursor from "~/components/TargetCursor";
 import LogoLoop from "~/components/LogoLoop";
 import { ClientOnly } from "~/components/ClientOnly";
@@ -115,8 +119,12 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         </div>
       </ClientOnly>
 
+      <StatsSection />
       <FeaturesSectionDemo />
       <MacbookSection />
+      <TestimonialsSection />
+      <FAQSection />
+      <CTASection />
       <Footer />
     </>
   );
