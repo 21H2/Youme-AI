@@ -5,7 +5,6 @@ import Footer from "~/components/homepage/footer";
 import HeroSection from "~/components/homepage/hero-section";
 import FeaturesSectionDemo from "~/components/homepage/features-section-demo";
 import { MacbookSection } from "~/components/homepage/macbook-section";
-import ScrollStack, { ScrollStackItem } from "~/components/ScrollStack";
 import ProfileCard from "~/components/ProfileCard";
 import TargetCursor from "~/components/TargetCursor";
 import LogoLoop from "~/components/LogoLoop";
@@ -81,7 +80,11 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   return (
     <>
       <ClientOnly fallback={null}>
-        <TargetCursor targetSelector=".cursor-target" spinDuration={2} hideDefaultCursor={true} />
+        <TargetCursor 
+          targetSelector="a, button, input, textarea, select, [role='button'], .cursor-target, .pc-card-wrapper, .logoloop__item" 
+          spinDuration={2} 
+          hideDefaultCursor={true} 
+        />
       </ClientOnly>
       <HeroSection loaderData={loaderData}/>
       
@@ -113,31 +116,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         </div>
       </ClientOnly>
 
-      <ClientOnly fallback={<div className="my-16 h-96" />}>
-        <ScrollStack
-        className="my-16"
-        itemDistance={150}
-        itemScale={0.05}
-        itemStackDistance={40}
-        stackPosition="30%"
-        scaleEndPosition="15%"
-        baseScale={0.9}
-        useWindowScroll={true}
-      >
-        <ScrollStackItem itemClassName="bg-gradient-to-br from-purple-500 to-pink-500 cursor-target">
-          <h2 className="text-4xl font-bold text-white">AI-Powered Content</h2>
-          <p className="text-white/90 mt-4">Generate engaging content with advanced AI</p>
-        </ScrollStackItem>
-        <ScrollStackItem itemClassName="bg-gradient-to-br from-blue-500 to-cyan-500 cursor-target">
-          <h2 className="text-4xl font-bold text-white">Smart Analytics</h2>
-          <p className="text-white/90 mt-4">Track your content performance in real-time</p>
-        </ScrollStackItem>
-        <ScrollStackItem itemClassName="bg-gradient-to-br from-green-500 to-emerald-500 cursor-target">
-          <h2 className="text-4xl font-bold text-white">Easy Sharing</h2>
-          <p className="text-white/90 mt-4">Share your content across all platforms</p>
-        </ScrollStackItem>
-      </ScrollStack>
-      </ClientOnly>
+      
       <FeaturesSectionDemo />
       <MacbookSection />
       <ClientOnly fallback={<div className="py-20 bg-background h-96" />}>

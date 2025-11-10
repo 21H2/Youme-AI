@@ -109,7 +109,7 @@ export const SkeletonOne = () => {
       <div className="w-full p-5 mx-auto bg-white dark:bg-neutral-900 shadow-2xl group h-full">
         <div className="flex flex-1 w-full h-full flex-col space-y-2">
           <img
-            src="/ypai.png"
+            src="app/components/homepage/screen2.png"
             alt="Youme AI Dashboard"
             width={800}
             height={800}
