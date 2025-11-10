@@ -18,7 +18,7 @@ export function MacbookSection() {
             </div>
           </Link>
         }
-        src="/Users/umesh/Downloads/Youme-AI/app/components/homepage/screen.png"
+        src="/screen.png"
         showGradient={false}
       />
     </div>
