@@ -16,7 +16,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
   }
 
   // Hardcode the Convex URL for now
-  const convexUrl = "https://charming-bird-938.convex.cloud";
+  const convexUrl = "https://giant-chipmunk-464.convex.cloud";
   
   const convex = new ConvexHttpClient(convexUrl);
   

@@ -17,7 +17,7 @@ export function meta({ }: Route.MetaArgs) {
   const description =
     "AI-powered assistant for YouTube creators. Generate optimized titles, descriptions, thumbnails, and social media posts for your videos using advanced AI technology.";
   const keywords = "YouTube, AI Assistant, Content Creation, Video Optimization, AI Thumbnails, OpenAI, GPT-4, Video Transcription, Content Generator";
-  const siteUrl = "https://youtube-ai-assistant.com/";
+  const siteUrl = "https://youme.mushe.tech";
   const imageUrl =
     "https://jdj14ctwppwprnqu.public.blob.vercel-storage.com/youtube-ai-assistant-og.png";
 
@@ -60,7 +60,7 @@ export async function loader(args: Route.LoaderArgs) {
   const { userId } = await getAuth(args);
   
   // Fetch initial stats from Convex
-  const convexUrl = process.env.VITE_CONVEX_URL || "https://charming-bird-938.convex.cloud";
+  const convexUrl = process.env.VITE_CONVEX_URL || "https://giant-chipmunk-464.convex.cloud";
   const convex = new ConvexHttpClient(convexUrl);
   
   let initialStats = null;
@@ -142,17 +142,18 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       <MacbookSection />
       <ClientOnly fallback={<div className="py-20 bg-background h-96" />}>
         <div className="flex justify-center items-center py-20 bg-background">
-          <ProfileCard
-            avatarUrl="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&h=400&fit=crop"
-            miniAvatarUrl="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop"
-            name="Umesh Sharma"
-            title="Full Stack Developer"
-            handle="umeshsharma"
-            status="Available"
-            contactText="Contact Me"
-            showUserInfo={true}
-            onContactClick={() => window.location.href = '/dashboard'}
-          />
+        <ProfileCard
+  name="Umesh Sharma"
+  title="Full Stack Dev"
+  handle="@21H2"
+  status="Online"
+  contactText="Contact Me"
+  avatarUrl="2D6A7468-9AD4-453B-8306-CBE50789BB0C_1_105_c.jpeg"
+  showUserInfo={true}
+  enableTilt={true}
+  enableMobileTilt={false}
+  onContactClick={() => console.log('Contact clicked')}
+/>
         </div>
       </ClientOnly>
       <Footer />
