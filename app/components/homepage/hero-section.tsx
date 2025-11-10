@@ -2,11 +2,9 @@
 import { api } from 'convex/_generated/api'
 import { useQuery } from 'convex/react'
 import { Link } from 'react-router'
-import React from 'react'
 import { Button } from '~/components/ui/button'
 import VideoPlayer from '../VideoPlayer'
 import { Navbar } from './navbar'
-import ShinyText from '~/components/ui/ShinyText'
 import { ContainerTextFlip } from '../../../components/ui/container-text-flip'
 
 interface LoaderData {
@@ -31,11 +29,11 @@ export default function HeroSection({ loaderData }: { loaderData: LoaderData }) 
             <Navbar loaderData={loaderData} />
             <div className="pt-[4rem] px-[2rem]">
                 <div className="text-center">
-                    <h1 className="mx-auto mt-16 max-w-xl text-5xl text-balance font-medium">
-                        Introducing <ShinyText text="Youme AI" speed={3} />
+                    <h1 className="mx-auto mt-16 max-w-4xl text-5xl text-balance font-medium">
+                        Create <ContainerTextFlip words={["Viral", "Engaging", "Compelling", "Powerful"]} interval={2500} className="text-5xl px-4 py-2 inline-block" textClassName="font-bold" /> Content with AI
                     </h1>
-                    <p className="text-muted-foreground mx-auto mb-6 mt-4 text-balance text-xl">
-                        Generate <span className="inline-block"><ContainerTextFlip words={["compelling", "viral", "engaging", "powerful"]} interval={2000} className="text-xl px-2 py-1" textClassName="text-primary" /></span> titles, descriptions, stunning thumbnails, and social media posts.
+                    <p className="text-muted-foreground mx-auto mb-6 mt-6 text-balance text-xl max-w-2xl">
+                        Generate optimized titles, descriptions, stunning thumbnails, and social media posts for your YouTube videos.
                     </p>
                     <div className="flex flex-col items-center gap-2 *:w-full sm:flex-row sm:justify-center sm:*:w-auto">
                         <Button
